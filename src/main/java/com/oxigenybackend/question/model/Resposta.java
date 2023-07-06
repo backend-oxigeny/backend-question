@@ -1,9 +1,6 @@
 package com.oxigenybackend.question.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Resposta {
@@ -11,6 +8,9 @@ public class Resposta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String answer;
+    @ManyToOne
+    @JoinColumn(name = "pergunta_id")
+    private Pergunta pergunta;
 
     public Resposta(){
 
