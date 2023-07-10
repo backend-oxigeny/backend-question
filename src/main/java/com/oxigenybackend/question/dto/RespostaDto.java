@@ -7,6 +7,8 @@ public class RespostaDto {
 
     private Long  pergunta;
 
+    private Long usuario;
+
     public RespostaDto(){
 
     };
@@ -19,6 +21,7 @@ public class RespostaDto {
     public RespostaDto(Resposta entity) {
         this.answer = entity.getAnswer();
         this.pergunta = entity.getPergunta().getId();
+        usuario=entity.getUsuario().getId();
     }
 
 
@@ -36,5 +39,13 @@ public class RespostaDto {
 
     public void setPergunta(Long pergunta) {
         this.pergunta = pergunta;
+    }
+
+    public Long getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Long usuario) {
+        this.usuario = usuario;
     }
 }

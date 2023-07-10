@@ -3,6 +3,9 @@ package com.oxigenybackend.question.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Usuario {
     @Id
@@ -12,6 +15,9 @@ public class Usuario {
     private String email;
     private String senha;
     private String img;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Resposta> respostas = new ArrayList<>();
 
     @JsonIgnore
     @Column(columnDefinition = "TEXT")
@@ -26,6 +32,8 @@ public class Usuario {
         this.senha = senha;
         this.img = img;
     }
+
+
 
     public String getNome() {
         return nome;
