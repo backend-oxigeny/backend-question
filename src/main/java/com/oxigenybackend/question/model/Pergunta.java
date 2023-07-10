@@ -1,5 +1,6 @@
 package com.oxigenybackend.question.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -10,8 +11,11 @@ public class Pergunta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
     private String question;
+
+    @JsonIgnore
+    @Column(columnDefinition = "TEXT")
+    private Object hibernateLazyInitializer;
 
 
 
@@ -22,8 +26,8 @@ public class Pergunta {
     public Pergunta(){
 
     }
-    public Pergunta(Long id, String question, String title) {
-        this.title = title;
+    public Pergunta(Long id, String question) {
+
         this.id = id;
         this.question = question;
     }
@@ -32,13 +36,6 @@ public class Pergunta {
         return id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public void setId(Long id) {
         this.id = id;
@@ -52,6 +49,7 @@ public class Pergunta {
         this.question = question;
     }
 
+    @JsonIgnore
     public List<Resposta> getRespostas() {
         return respostas;
     }

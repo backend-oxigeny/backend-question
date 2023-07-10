@@ -50,7 +50,6 @@ public class PerguntaService {
     public Pergunta cadastro(Pergunta pergunta){
         Pergunta entity = new Pergunta();
         entity.setQuestion(pergunta.getQuestion());
-        entity.setTitle(pergunta.getTitle());
         repository.save(entity);
         return entity;
     }

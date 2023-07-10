@@ -1,5 +1,6 @@
 package com.oxigenybackend.question.services;
 
+import com.oxigenybackend.question.dto.RespostaDto;
 import com.oxigenybackend.question.model.Pergunta;
 import com.oxigenybackend.question.model.Resposta;
 import com.oxigenybackend.question.repository.PerguntaRepository;
@@ -53,7 +54,10 @@ public class RespostaService {
         entity.getRespostas().stream().forEach(System.out::println);
         return entity.getRespostas();
     }
-    public Resposta answer(Resposta resposta){
-       return respostaRepository.save(resposta);
+    public Resposta answer(RespostaDto dto){
+        Resposta entity = new Resposta();
+        entity.setAnswer(dto.getAnswer());
+        entity.setPergunta(perguntaRepository.getReferenceById(dto.getPergunta()));
+       return respostaRepository.save(entity);
     }
 }

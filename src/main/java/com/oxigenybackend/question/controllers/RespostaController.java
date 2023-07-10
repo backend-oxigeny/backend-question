@@ -1,5 +1,6 @@
 package com.oxigenybackend.question.controllers;
 
+import com.oxigenybackend.question.dto.RespostaDto;
 import com.oxigenybackend.question.model.Pergunta;
 import com.oxigenybackend.question.model.Resposta;
 import com.oxigenybackend.question.repository.RespostaRepository;
@@ -20,13 +21,13 @@ public class RespostaController {
     public List<Resposta> findAll(){
         return service.findAll();
     }
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "pergunta/{id}")
     public List<Resposta> getQuestionById(@PathVariable Long id){
         List<Resposta> respostaEntity = service.getQuestionById(id);
         return respostaEntity;
     }
     @PostMapping
-    public Resposta answer(@RequestBody Resposta resposta){
+    public Resposta answer(@RequestBody RespostaDto resposta){
         return service.answer(resposta);
     }
 }

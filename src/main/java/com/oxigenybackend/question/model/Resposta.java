@@ -36,4 +36,12 @@ public class Resposta {
     public void setAnswer(String answer) {
         this.answer = answer;
     }
+
+    public Pergunta getPergunta() {
+        return pergunta;
+    }
+
+    public void setPergunta(Pergunta pergunta) {
+        this.pergunta = pergunta;
+    }
 }
