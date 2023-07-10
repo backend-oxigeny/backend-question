@@ -6,6 +6,7 @@ import com.oxigenybackend.question.repository.PerguntaRepository;
 import com.oxigenybackend.question.repository.RespostaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service
@@ -15,6 +16,7 @@ public class RespostaService {
     @Autowired
     private PerguntaRepository perguntaRepository;
 
+    @Transactional(readOnly = true)
     public List<Resposta> findAll(){
         return respostaRepository.findAll();
     }
@@ -28,15 +30,18 @@ public class RespostaService {
 
     }
 
+    @Transactional
     public void delete(Long id){
         respostaRepository.deleteById(id);
     }
 
+    @Transactional(readOnly = true)
     public Resposta findById(Long id){
         return respostaRepository.findById(id).get();
     }
 
 
+    @Transactional
     public Resposta update(Resposta resposta,Long id){
         Resposta entity = respostaRepository.getReferenceById(id);
         entity.setAnswer(resposta.getAnswer());
