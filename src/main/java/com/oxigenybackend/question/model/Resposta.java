@@ -1,5 +1,6 @@
 package com.oxigenybackend.question.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -7,6 +8,9 @@ public class Resposta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @JsonIgnore
+    @Column(columnDefinition = "TEXT")
     private String answer;
     @ManyToOne
     @JoinColumn(name = "pergunta_id")
