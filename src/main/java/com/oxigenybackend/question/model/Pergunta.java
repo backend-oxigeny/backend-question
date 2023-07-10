@@ -13,6 +13,8 @@ public class Pergunta {
     private String title;
     private String question;
 
+
+
     @OneToMany(mappedBy = "pergunta")
     private List <Resposta> respostas = new ArrayList<>();
 
