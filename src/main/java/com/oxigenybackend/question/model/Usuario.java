@@ -19,6 +19,9 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Resposta> respostas = new ArrayList<>();
 
+    @OneToMany(mappedBy = "usuario")
+    private List<Pergunta> perguntas = new ArrayList<>();
+
     @JsonIgnore
     @Column(columnDefinition = "TEXT")
     private Object hibernateLazyInitializer;

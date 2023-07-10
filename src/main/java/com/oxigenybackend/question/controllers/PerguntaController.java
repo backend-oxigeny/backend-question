@@ -1,5 +1,6 @@
 package com.oxigenybackend.question.controllers;
 
+import com.oxigenybackend.question.dto.PerguntaDto;
 import com.oxigenybackend.question.model.Pergunta;
 import com.oxigenybackend.question.repository.PerguntaRepository;
 import com.oxigenybackend.question.services.PerguntaService;
@@ -24,7 +25,7 @@ public class PerguntaController {
     }
 
     @PostMapping
-    public Pergunta cadastro(@RequestBody Pergunta pergunta){
+    public Pergunta cadastro(@RequestBody PerguntaDto pergunta){
         return service.cadastro(pergunta);
 
     }

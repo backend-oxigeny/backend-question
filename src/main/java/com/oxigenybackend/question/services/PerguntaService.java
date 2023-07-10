@@ -1,8 +1,11 @@
 package com.oxigenybackend.question.services;
 
+import com.oxigenybackend.question.dto.PerguntaDto;
 import com.oxigenybackend.question.model.Pergunta;
+import com.oxigenybackend.question.model.Usuario;
 import com.oxigenybackend.question.repository.PerguntaRepository;
 import com.oxigenybackend.question.repository.RespostaRepository;
+import com.oxigenybackend.question.repository.UsuarioRepository;
 import jakarta.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,12 +18,15 @@ public class PerguntaService {
     @Autowired
     private PerguntaRepository repository;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
     @Transactional(readOnly = true)
-    public List<Pergunta> findAll(){
+    public List<Pergunta> findAll() {
         return repository.findAll();
     }
 
-    public Pergunta create(Pergunta pergunta){
+    public Pergunta create(Pergunta pergunta) {
         Pergunta entity = new Pergunta();
         entity.setQuestion(pergunta.getQuestion());
         repository.save(entity);
@@ -29,17 +35,17 @@ public class PerguntaService {
     }
 
     @Transactional
-    public void delete(Long id){
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 
     @Transactional(readOnly = true)
-    public Pergunta findById(Long id){
+    public Pergunta findById(Long id) {
         return repository.findById(id).get();
     }
 
     @Transactional
-    public Pergunta update(Pergunta pergunta,Long id){
+    public Pergunta update(Pergunta pergunta, Long id) {
         Pergunta entity = repository.getReferenceById(id);
         entity.setQuestion(pergunta.getQuestion());
         repository.save(entity);
@@ -47,9 +53,12 @@ public class PerguntaService {
     }
 
     @Transactional
-    public Pergunta cadastro(Pergunta pergunta){
+    public Pergunta cadastro(PerguntaDto dto) {
         Pergunta entity = new Pergunta();
-        entity.setQuestion(pergunta.getQuestion());
+        entity.setQuestion(dto.getQuestion());
+
+        Usuario user = usuarioRepository.getReferenceById(dto.getUsuario());
+        entity.setUsuario(user);
         repository.save(entity);
         return entity;
     }

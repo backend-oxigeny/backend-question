@@ -14,19 +14,22 @@ public class Pergunta {
 
     private String question;
 
+    @OneToMany(mappedBy = "pergunta")
+    private List<Resposta> respostas = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
     @JsonIgnore
     @Column(columnDefinition = "TEXT")
     private Object hibernateLazyInitializer;
 
 
-
-    @OneToMany(mappedBy = "pergunta")
-    private List <Resposta> respostas = new ArrayList<>();
-
-
-    public Pergunta(){
+    public Pergunta() {
 
     }
+
     public Pergunta(Long id, String question) {
 
         this.id = id;
@@ -53,5 +56,13 @@ public class Pergunta {
     @JsonIgnore
     public List<Resposta> getRespostas() {
         return respostas;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
