@@ -40,5 +40,4 @@ public class PerguntaService {
         repository.save(entity);
         return entity;
     }
-
 }

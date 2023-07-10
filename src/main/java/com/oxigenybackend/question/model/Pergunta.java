@@ -10,6 +10,7 @@ public class Pergunta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String title;
     private String question;
 
     @OneToMany(mappedBy = "pergunta")
@@ -19,13 +20,22 @@ public class Pergunta {
     public Pergunta(){
 
     }
-    public Pergunta(Long id, String question) {
+    public Pergunta(Long id, String question, String title) {
+        this.title = title;
         this.id = id;
         this.question = question;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setId(Long id) {
@@ -38,5 +48,9 @@ public class Pergunta {
 
     public void setQuestion(String question) {
         this.question = question;
+    }
+
+    public List<Resposta> getRespostas() {
+        return respostas;
     }
 }
