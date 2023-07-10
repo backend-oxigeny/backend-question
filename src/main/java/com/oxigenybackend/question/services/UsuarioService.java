@@ -21,6 +21,7 @@ public class UsuarioService {
         entity.setNome(usuario.getNome());
         entity.setEmail(usuario.getEmail());
         entity.setSenha(usuario.getSenha());
+        entity.setImg(usuario.getImg());
         usuarioRepository.save(entity);
         return entity;
     }
@@ -29,6 +30,7 @@ public class UsuarioService {
         entity.setNome(usuario.getNome());
         entity.setEmail(usuario.getEmail());
         entity.setSenha(usuario.getSenha());
+        entity.setImg(usuario.getImg());
         usuarioRepository.save(entity);
         return entity;
     }

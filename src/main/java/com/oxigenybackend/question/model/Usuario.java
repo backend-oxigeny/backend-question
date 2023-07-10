@@ -1,9 +1,7 @@
 package com.oxigenybackend.question.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 @Entity
 public class Usuario {
@@ -14,6 +12,10 @@ public class Usuario {
     private String email;
     private String senha;
     private String img;
+
+    @JsonIgnore
+    @Column(columnDefinition = "TEXT")
+    private Object hibernateLazyInitializer;
 
     public Usuario() {
     }
@@ -64,4 +66,5 @@ public class Usuario {
     public void setId(Long id) {
         this.id = id;
     }
+
 }
