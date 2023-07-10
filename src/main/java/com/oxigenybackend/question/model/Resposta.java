@@ -9,8 +9,6 @@ public class Resposta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonIgnore
-    @Column(columnDefinition = "TEXT")
     private String answer;
     @ManyToOne
     @JoinColumn(name = "pergunta_id")

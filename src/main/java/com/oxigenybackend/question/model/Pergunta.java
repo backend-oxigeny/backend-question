@@ -12,8 +12,6 @@ public class Pergunta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonIgnore
-    @Column(columnDefinition = "TEXT")
     private String question;
 
     @JsonIgnore
