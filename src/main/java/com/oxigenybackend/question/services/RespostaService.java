@@ -72,4 +72,13 @@ public class RespostaService {
 
         return respostaRepository.save(entity);
     }
+
+    public void deleteAnswer(Long id){
+        respostaRepository.deleteById(id);
+    }
+    public Resposta updateAnswer(RespostaDto dto, Long id){
+        Resposta entity = respostaRepository.getReferenceById(id);
+        entity.setAnswer(dto.getAnswer());
+        return respostaRepository.save(entity);
+    }
 }

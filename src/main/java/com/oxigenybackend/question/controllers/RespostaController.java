@@ -30,4 +30,12 @@ public class RespostaController {
     public Resposta answer(@RequestBody RespostaDto resposta){
         return service.answer(resposta);
     }
+    @DeleteMapping(value = "/{id}")
+    public void deleteAnswer(@PathVariable Long id){
+        service.deleteAnswer(id);
+    }
+    @PutMapping(value = "/{id}")
+    public Resposta updateAnswer(@RequestBody RespostaDto resposta, @PathVariable Long id){
+      return service.updateAnswer(resposta,id);
+    }
 }
