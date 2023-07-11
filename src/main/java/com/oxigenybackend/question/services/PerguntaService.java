@@ -29,6 +29,7 @@ public class PerguntaService {
     public Pergunta create(Pergunta pergunta) {
         Pergunta entity = new Pergunta();
         entity.setQuestion(pergunta.getQuestion());
+        entity.setTitle(pergunta.getTitle());
         repository.save(entity);
         return entity;
 
@@ -48,6 +49,7 @@ public class PerguntaService {
     public Pergunta update(Pergunta pergunta, Long id) {
         Pergunta entity = repository.getReferenceById(id);
         entity.setQuestion(pergunta.getQuestion());
+        entity.setTitle(pergunta.getTitle());
         repository.save(entity);
         return entity;
     }
@@ -56,6 +58,7 @@ public class PerguntaService {
     public Pergunta cadastro(PerguntaDto dto) {
         Pergunta entity = new Pergunta();
         entity.setQuestion(dto.getQuestion());
+        entity.setTitle(dto.getTitle());
 
         Usuario user = usuarioRepository.getReferenceById(dto.getUsuario());
         entity.setUsuario(user);

@@ -6,6 +6,7 @@ public class PerguntaDto {
     private Long id;
 
     private String question;
+    private String title;
 
     private Long usuario;
 
@@ -47,5 +48,13 @@ public class PerguntaDto {
 
     public void setUsuario(Long usuario) {
         this.usuario = usuario;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
