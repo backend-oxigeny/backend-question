@@ -1,17 +1,17 @@
 package com.oxigenybackend.question.services;
 
+import com.oxigenybackend.question.dto.PerguntaMaxDto;
 import com.oxigenybackend.question.dto.PerguntaDto;
 import com.oxigenybackend.question.model.Pergunta;
-import com.oxigenybackend.question.model.Resposta;
 import com.oxigenybackend.question.model.Usuario;
 import com.oxigenybackend.question.repository.PerguntaRepository;
 import com.oxigenybackend.question.repository.RespostaRepository;
 import com.oxigenybackend.question.repository.UsuarioRepository;
-import jakarta.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,10 +24,7 @@ public class PerguntaService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Transactional(readOnly = true)
-    public List<Pergunta> findAll() {
-        return repository.findAll();
-    }
+
 
     public Pergunta create(Pergunta pergunta) {
         Pergunta entity = new Pergunta();
@@ -68,4 +65,15 @@ public class PerguntaService {
         repository.save(entity);
         return entity;
     }
+
+    @Transactional(readOnly = true)
+    public List<PerguntaMaxDto> findAll(){
+       List<Pergunta> resultado = repository.findAll();
+       List<PerguntaMaxDto> perguntaMaxDtos= new ArrayList<>();
+       for(Pergunta p : resultado){
+            perguntaMaxDtos.add(new PerguntaMaxDto(p));
+        }
+
+       return perguntaMaxDtos;
+  }
 }

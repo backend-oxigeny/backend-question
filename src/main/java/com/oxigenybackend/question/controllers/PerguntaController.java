@@ -1,9 +1,8 @@
 package com.oxigenybackend.question.controllers;
 
+import com.oxigenybackend.question.dto.PerguntaMaxDto;
 import com.oxigenybackend.question.dto.PerguntaDto;
 import com.oxigenybackend.question.model.Pergunta;
-import com.oxigenybackend.question.model.Resposta;
-import com.oxigenybackend.question.repository.PerguntaRepository;
 import com.oxigenybackend.question.services.PerguntaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,7 @@ public class PerguntaController {
     private PerguntaService service;
 
     @GetMapping
-    public List<Pergunta> findAll(){
+    public List<PerguntaMaxDto> findAll(){
         return service.findAll();
     }
 
@@ -27,5 +26,6 @@ public class PerguntaController {
     public Pergunta cadastro(@RequestBody PerguntaDto pergunta){
         return service.cadastro(pergunta);
     }
+
 
 }
