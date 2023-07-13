@@ -5,6 +5,6 @@ insert into Pergunta(title,question,usuario_id) values('eu me preocupo','como va
 insert into Pergunta(title,question,usuario_id) values('eu sou maluco','como eu faço uma api?',2)
 
 
-insert into Resposta(answer, pergunta_id,usuario_id) values('estou bem!', 1,2)
+insert into Resposta(answer, pergunta_id,usuario_id) values('estou bem!', 1,1)
 insert into Resposta(answer, pergunta_id,usuario_id) values('tudo joia.', 1,2)
-insert into Resposta(answer, pergunta_id,usuario_id) values('tem que praticar muito', 1,1)
+insert into Resposta(answer, pergunta_id,usuario_id) values('tem que praticar muito', 2,1)

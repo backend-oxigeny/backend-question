@@ -2,6 +2,7 @@ package com.oxigenybackend.question.controllers;
 
 import com.oxigenybackend.question.dto.PerguntaDto;
 import com.oxigenybackend.question.model.Pergunta;
+import com.oxigenybackend.question.model.Resposta;
 import com.oxigenybackend.question.repository.PerguntaRepository;
 import com.oxigenybackend.question.services.PerguntaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,6 @@ public class PerguntaController {
     @PostMapping
     public Pergunta cadastro(@RequestBody PerguntaDto pergunta){
         return service.cadastro(pergunta);
-
     }
 
 }

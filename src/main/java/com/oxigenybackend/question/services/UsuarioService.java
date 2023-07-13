@@ -2,6 +2,7 @@ package com.oxigenybackend.question.services;
 
 import com.oxigenybackend.question.model.Usuario;
 import com.oxigenybackend.question.repository.UsuarioRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,6 @@ import java.util.List;
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
-
 
     public List<Usuario> findAll(){
         return usuarioRepository.findAll();
@@ -34,8 +34,20 @@ public class UsuarioService {
         usuarioRepository.save(entity);
         return entity;
     }
-    public void delete(Long id){
-        usuarioRepository.deleteById(id);
+
+    public Usuario findByEmailAndSenha(String email, String senha){
+        Usuario entity = usuarioRepository.findByEmailAndSenha(email, senha);
+        try {
+            if (entity == null){
+                throw new EntityNotFoundException();
+            }
+            return entity;
+        } catch (EntityNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
     }
+
+
 
 }

@@ -16,15 +16,13 @@ public class RespostaController {
 
     @Autowired
     private RespostaService service;
-
     @GetMapping
     public List<Resposta> findAll(){
         return service.findAll();
     }
     @GetMapping(value = "pergunta/{id}")
     public List<Resposta> getQuestionById(@PathVariable Long id){
-        List<Resposta> respostaEntity = service.getQuestionById(id);
-        return respostaEntity;
+        return service.getQuestionById(id);
     }
     @PostMapping
     public Resposta answer(@RequestBody RespostaDto resposta){

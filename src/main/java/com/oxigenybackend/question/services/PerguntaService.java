@@ -2,6 +2,7 @@ package com.oxigenybackend.question.services;
 
 import com.oxigenybackend.question.dto.PerguntaDto;
 import com.oxigenybackend.question.model.Pergunta;
+import com.oxigenybackend.question.model.Resposta;
 import com.oxigenybackend.question.model.Usuario;
 import com.oxigenybackend.question.repository.PerguntaRepository;
 import com.oxigenybackend.question.repository.RespostaRepository;
@@ -17,6 +18,8 @@ import java.util.List;
 public class PerguntaService {
     @Autowired
     private PerguntaRepository repository;
+    @Autowired
+    private RespostaRepository respostaRepository;
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -65,5 +68,4 @@ public class PerguntaService {
         repository.save(entity);
         return entity;
     }
-
 }
