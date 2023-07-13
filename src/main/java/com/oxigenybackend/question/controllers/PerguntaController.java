@@ -14,15 +14,13 @@ import java.util.List;
 @RequestMapping(value = "/perguntas")
 public class PerguntaController {
 
-    @Autowired
-    private PerguntaRepository repository;
 
     @Autowired
     private PerguntaService service;
 
     @GetMapping
     public List<Pergunta> findAll(){
-        return repository.findAll();
+        return service.findAll();
     }
 
     @PostMapping
