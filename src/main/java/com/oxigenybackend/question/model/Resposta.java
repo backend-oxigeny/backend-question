@@ -49,7 +49,7 @@ public class Resposta {
     public void setAnswer(String answer) {
         this.answer = answer;
     }
-    @JsonIgnore
+    //@JsonIgnore
     public Pergunta getPergunta() {
         return pergunta;
     }
