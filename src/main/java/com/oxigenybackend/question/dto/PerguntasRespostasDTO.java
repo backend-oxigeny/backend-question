@@ -11,7 +11,7 @@ public class PerguntasRespostasDTO {
     private Long id;
     private String question;
     private UsuarioRespostaDto usuario;
-    private List<Resposta> respostas = new ArrayList<>();
+    private List<RespostaDTOOut> respostas = new ArrayList<>();
 
     public PerguntasRespostasDTO() {
     }
@@ -24,7 +24,7 @@ public class PerguntasRespostasDTO {
     public PerguntasRespostasDTO(Pergunta entity){
         this.question = entity.getQuestion();
         this.id = entity.getId();
-        this.respostas = entity.getRespostas();
+        entity.getRespostas().forEach(f -> respostas.add(new RespostaDTOOut(f)));
         UsuarioRespostaDto usuario = new UsuarioRespostaDto();
         usuario.setNome(getUsuario().getNome());
         usuario.setId(getUsuario().getId());
@@ -55,7 +55,7 @@ public class PerguntasRespostasDTO {
         this.usuario = usuario;
     }
 
-    public List<Resposta> getRespostasDTO() {
+    public List<RespostaDTOOut> getRespostasDTO() {
         return respostas;
     }
 
