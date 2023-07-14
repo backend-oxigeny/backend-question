@@ -4,7 +4,6 @@ import com.oxigenybackend.question.dto.UsuarioDto;
 import com.oxigenybackend.question.model.Usuario;
 import com.oxigenybackend.question.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +26,11 @@ public class UsuarioController {
         return usuarioService.create(usuario);
     }
 
+    @GetMapping(value = "/{id}")
+    public Usuario findById(@PathVariable Long id){
+        return usuarioService.findById(id);
+    }
+
     @PutMapping(value = "/{id}")
     public Usuario update(@RequestBody Usuario usuario,@PathVariable Long id){
         return usuarioService.update(usuario, id);
@@ -37,10 +41,10 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.findByEmailAndSenha(usuarioDto.getEmail(), usuarioDto.getSenha()));
     }
 
-//    @DeleteMapping(value = "/{id}")
-//    public void delete(@PathVariable Long id){
-//        usuarioService.delete(id);
-//    }
-//
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) throws Exception{
+        usuarioService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }

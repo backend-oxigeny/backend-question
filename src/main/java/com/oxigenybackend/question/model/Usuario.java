@@ -78,4 +78,13 @@ public class Usuario {
         this.id = id;
     }
 
+    @JsonIgnore
+    public List<Resposta> getRespostas() {
+        return respostas;
+    }
+
+    @JsonIgnore
+    public List<Pergunta> getPerguntas() {
+        return perguntas;
+    }
 }
