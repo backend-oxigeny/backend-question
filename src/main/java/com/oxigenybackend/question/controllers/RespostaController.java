@@ -7,6 +7,8 @@ import com.oxigenybackend.question.model.Resposta;
 import com.oxigenybackend.question.repository.RespostaRepository;
 import com.oxigenybackend.question.services.RespostaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +28,8 @@ public class RespostaController {
         return service.getQuestionById(id);
     }
     @PostMapping
-    public Resposta answer(@RequestBody RespostaDto resposta){
-        return service.answer(resposta);
+    public ResponseEntity<Resposta> answer(@RequestBody RespostaDto resposta){
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.answer(resposta));
     }
     @DeleteMapping(value = "/{id}")
     public void deleteAnswer(@PathVariable Long id){

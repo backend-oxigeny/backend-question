@@ -77,7 +77,7 @@ public class RespostaService {
         entity.setAnswer(dto.getAnswer());
         entity.setPergunta(perguntaRepository.getReferenceById(dto.getPergunta()));
 
-        Usuario user = usuarioRepository.getReferenceById(dto.getUsuario());
+        Usuario user = usuarioRepository.getReferenceById(dto.getUsuario().longValue());
 
         entity.setUsuario(user);
 
