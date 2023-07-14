@@ -29,11 +29,11 @@ public class PerguntaMaxDto {
         this.usuario = entity.getUsuario().getNome();
     }
 
-    public Integer getQuantedadeDeResposta() {
+    public Integer getQuantidadeDeRespostas() {
         return QuantidadeDeResposta;
     }
 
-    public void setQuantedadeDeResposta(Integer quantedadeDeResposta) {
+    public void setQuantidadeDeRespostas(Integer quantedadeDeResposta) {
         QuantidadeDeResposta = quantedadeDeResposta;
     }
 
