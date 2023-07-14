@@ -10,22 +10,25 @@ public class PerguntasRespostasDTO {
    // private Pergunta pergunta;
     private Long id;
     private String question;
-    private Usuario usuario;
+    private UsuarioRespostaDto usuario;
     private List<Resposta> respostas = new ArrayList<>();
 
     public PerguntasRespostasDTO() {
     }
 
-    public PerguntasRespostasDTO(Pergunta pergunta, Long id, String question, Usuario usuario) {
+    public PerguntasRespostasDTO(Pergunta pergunta, Long id, String question, UsuarioRespostaDto usuario) {
         this.question = question;
         this.id = id;
         this.usuario = usuario;
     }
     public PerguntasRespostasDTO(Pergunta entity){
-
         this.question = entity.getQuestion();
         this.id = entity.getId();
         this.respostas = entity.getRespostas();
+        UsuarioRespostaDto usuario = new UsuarioRespostaDto();
+        usuario.setNome(getUsuario().getNome());
+        usuario.setId(getUsuario().getId());
+        this.usuario = usuario;
     }
 
     public Long getId() {
@@ -44,11 +47,11 @@ public class PerguntasRespostasDTO {
         this.question = question;
     }
 
-    public Usuario getUsuario() {
+    public UsuarioRespostaDto getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioRespostaDto usuario) {
         this.usuario = usuario;
     }
 

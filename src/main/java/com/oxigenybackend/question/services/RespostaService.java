@@ -3,6 +3,7 @@ package com.oxigenybackend.question.services;
 import com.oxigenybackend.question.dto.PerguntaMaxDto;
 import com.oxigenybackend.question.dto.PerguntasRespostasDTO;
 import com.oxigenybackend.question.dto.RespostaDto;
+import com.oxigenybackend.question.dto.UsuarioRespostaDto;
 import com.oxigenybackend.question.model.Pergunta;
 import com.oxigenybackend.question.model.Resposta;
 import com.oxigenybackend.question.model.Usuario;
@@ -64,7 +65,10 @@ public class RespostaService {
         PerguntasRespostasDTO perguntasRespostasDTO = new PerguntasRespostasDTO();
         perguntasRespostasDTO.setId(pergunta.getId());
         perguntasRespostasDTO.setQuestion(pergunta.getQuestion());
-        perguntasRespostasDTO.setUsuario(pergunta.getUsuario());
+        UsuarioRespostaDto user = new UsuarioRespostaDto();
+        user.setId(pergunta.getUsuario().getId());
+        user.setNome(pergunta.getUsuario().getNome());
+        perguntasRespostasDTO.setUsuario(user);
         pergunta.getRespostas().forEach(f -> perguntasRespostasDTO.getRespostasDTO().add(f));
         return perguntasRespostasDTO;
     }
