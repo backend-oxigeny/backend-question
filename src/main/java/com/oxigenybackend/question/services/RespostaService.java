@@ -1,5 +1,7 @@
 package com.oxigenybackend.question.services;
 
+import com.oxigenybackend.question.dto.PerguntaMaxDto;
+import com.oxigenybackend.question.dto.PerguntasRespostasDTO;
 import com.oxigenybackend.question.dto.RespostaDto;
 import com.oxigenybackend.question.model.Pergunta;
 import com.oxigenybackend.question.model.Resposta;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -56,9 +59,14 @@ public class RespostaService {
         return entity;
     }
 
-    public List<Resposta> getQuestionById(Long id) {
-        Pergunta entity = perguntaRepository.getReferenceById(id);
-        return entity.getRespostas();
+    public PerguntasRespostasDTO getQuestionById(Long id) {
+        Pergunta pergunta = perguntaRepository.getReferenceById(id);
+        PerguntasRespostasDTO perguntasRespostasDTO = new PerguntasRespostasDTO();
+        perguntasRespostasDTO.setId(pergunta.getId());
+        perguntasRespostasDTO.setQuestion(pergunta.getQuestion());
+        perguntasRespostasDTO.setUsuario(pergunta.getUsuario());
+        pergunta.getRespostas().forEach(f -> perguntasRespostasDTO.getRespostasDTO().add(f));
+        return perguntasRespostasDTO;
     }
 
     public Resposta answer(RespostaDto dto) {

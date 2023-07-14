@@ -16,6 +16,7 @@ public class Pergunta {
 
     private String question;
 
+
     @OneToMany(mappedBy = "pergunta")
     private List<Resposta> respostas = new ArrayList<>();
 
@@ -32,10 +33,11 @@ public class Pergunta {
 
     }
 
-    public Pergunta(Long id, String question) {
+    public Pergunta(Long id, String question, Pergunta pergunta) {
 
         this.id = id;
         this.question = question;
+
     }
 
     public Long getId() {
@@ -75,4 +77,5 @@ public class Pergunta {
     public void setTitle(String title) {
         this.title = title;
     }
+
 }

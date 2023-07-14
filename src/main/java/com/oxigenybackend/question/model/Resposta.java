@@ -14,7 +14,6 @@ public class Resposta {
     @JoinColumn(name = "pergunta_id")
     private Pergunta pergunta;
 
-
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
@@ -50,7 +49,7 @@ public class Resposta {
     public void setAnswer(String answer) {
         this.answer = answer;
     }
-
+    @JsonIgnore
     public Pergunta getPergunta() {
         return pergunta;
     }

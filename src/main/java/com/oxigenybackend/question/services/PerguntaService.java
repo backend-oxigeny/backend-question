@@ -69,11 +69,10 @@ public class PerguntaService {
     @Transactional(readOnly = true)
     public List<PerguntaMaxDto> findAll(){
        List<Pergunta> resultado = repository.findAll();
-       List<PerguntaMaxDto> perguntaMaxDtos= new ArrayList<>();
+       List<PerguntaMaxDto> perguntaMaxDtos = new ArrayList<>();
        for(Pergunta p : resultado){
             perguntaMaxDtos.add(new PerguntaMaxDto(p));
         }
-
        return perguntaMaxDtos;
   }
 }

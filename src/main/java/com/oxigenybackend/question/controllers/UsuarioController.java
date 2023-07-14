@@ -21,6 +21,7 @@ public class UsuarioController {
     public List<Usuario> findAll(){
         return usuarioService.findAll();
     }
+
     @PostMapping
     public Usuario create(@RequestBody Usuario usuario){
         return usuarioService.create(usuario);

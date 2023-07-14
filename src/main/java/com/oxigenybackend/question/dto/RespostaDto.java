@@ -5,7 +5,7 @@ import com.oxigenybackend.question.model.Resposta;
 public class RespostaDto {
     private String answer;
 
-    private Long  pergunta;
+    private Long pergunta;
 
     private Long usuario;
 

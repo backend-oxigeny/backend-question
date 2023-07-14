@@ -1,5 +1,6 @@
 package com.oxigenybackend.question.controllers;
 
+import com.oxigenybackend.question.dto.PerguntasRespostasDTO;
 import com.oxigenybackend.question.dto.RespostaDto;
 import com.oxigenybackend.question.model.Pergunta;
 import com.oxigenybackend.question.model.Resposta;
@@ -21,7 +22,7 @@ public class RespostaController {
         return service.findAll();
     }
     @GetMapping(value = "pergunta/{id}")
-    public List<Resposta> getQuestionById(@PathVariable Long id){
+    public PerguntasRespostasDTO getQuestionById(@PathVariable Long id){
         return service.getQuestionById(id);
     }
     @PostMapping
