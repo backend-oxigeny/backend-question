@@ -26,7 +26,7 @@ public class PerguntaController {
     public Pergunta cadastro(@RequestBody PerguntaDto pergunta){
         return service.cadastro(pergunta);
     }
-    @DeleteMapping(value = "{/id}")
+    @DeleteMapping(value = "/{id}")
     public void deleteQuestion(@PathVariable Long id){
         service.delete(id);
     }
