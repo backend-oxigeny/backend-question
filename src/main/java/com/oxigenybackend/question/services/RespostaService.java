@@ -8,6 +8,8 @@ import com.oxigenybackend.question.repository.PerguntaRepository;
 import com.oxigenybackend.question.repository.RespostaRepository;
 import com.oxigenybackend.question.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,8 +27,16 @@ public class RespostaService {
 
 
     @Transactional(readOnly = true)
-    public List<Resposta> findAll() {
-        return respostaRepository.findAll();
+    public List<DTORespostasGet> findAll() {
+        List<Resposta> repository = respostaRepository.findAll();
+
+        List<DTORespostasGet> dtos = new ArrayList<>();
+
+        for(Resposta r : repository){
+            dtos.add(new DTORespostasGet(r));
+
+        }
+        return dtos;
     }
 
 
