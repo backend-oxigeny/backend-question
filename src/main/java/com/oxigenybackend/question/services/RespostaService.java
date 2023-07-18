@@ -72,6 +72,7 @@ public class RespostaService {
         PerguntasRespostasDTO perguntasRespostasDTO = new PerguntasRespostasDTO();
         perguntasRespostasDTO.setId(pergunta.getId());
         perguntasRespostasDTO.setQuestion(pergunta.getQuestion());
+        perguntasRespostasDTO.setTitle(pergunta.getTitle());
         UsuarioRespostaDto user = new UsuarioRespostaDto();
         user.setId(pergunta.getUsuario().getId());
         user.setNome(pergunta.getUsuario().getNome());

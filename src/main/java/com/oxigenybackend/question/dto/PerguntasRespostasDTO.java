@@ -9,6 +9,7 @@ import java.util.List;
 public class PerguntasRespostasDTO {
    // private Pergunta pergunta;
     private Long id;
+    private String title;
     private String question;
     private UsuarioRespostaDto usuario;
     private List<RespostaDTOOut> respostas = new ArrayList<>();
@@ -16,12 +17,14 @@ public class PerguntasRespostasDTO {
     public PerguntasRespostasDTO() {
     }
 
-    public PerguntasRespostasDTO(Pergunta pergunta, Long id, String question, UsuarioRespostaDto usuario) {
+    public PerguntasRespostasDTO(String title, Long id, String question, UsuarioRespostaDto usuario) {
+        this.title = title;
         this.question = question;
         this.id = id;
         this.usuario = usuario;
     }
     public PerguntasRespostasDTO(Pergunta entity){
+        this.title = entity.getTitle();
         this.question = entity.getQuestion();
         this.id = entity.getId();
         entity.getRespostas().forEach(f -> respostas.add(new RespostaDTOOut(f)));
@@ -59,4 +62,11 @@ public class PerguntasRespostasDTO {
         return respostas;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
