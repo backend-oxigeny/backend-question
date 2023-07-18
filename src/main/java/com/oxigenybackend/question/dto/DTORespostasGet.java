@@ -24,6 +24,7 @@ public class DTORespostasGet {
         usuario.setNome(entity.getPergunta().getUsuario().getNome());
         usuario.setId(entity.getPergunta().getUsuario().getId());
         PerguntasRespostasDTOGet perguntaDto = new PerguntasRespostasDTOGet();
+        perguntaDto.setTitle(entity.getPergunta().getTitle());
         perguntaDto.setQuestion(entity.getPergunta().getQuestion());
         perguntaDto.setId(entity.getPergunta().getId());
         perguntaDto.setUsuario(usuario);
