@@ -26,7 +26,7 @@ public class PerguntaController {
     public Pergunta cadastro(@RequestBody PerguntaDto pergunta){
         return service.cadastro(pergunta);
     }
-    @PostMapping
+    @PutMapping(value = "/{id}")
     public Pergunta update(@RequestBody Pergunta pergunta, @PathVariable Long id){
       return service.update(pergunta, id);
     }
