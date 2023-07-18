@@ -5,8 +5,12 @@ import com.oxigenybackend.question.dto.PerguntaDto;
 import com.oxigenybackend.question.model.Pergunta;
 import com.oxigenybackend.question.services.PerguntaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -23,8 +27,10 @@ public class PerguntaController {
     }
 
     @PostMapping
-    public Pergunta cadastro(@RequestBody PerguntaDto pergunta){
-        return service.cadastro(pergunta);
+    public ResponseEntity<Pergunta>  cadastro(@RequestBody PerguntaDto pergunta){
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(pergunta.getId()).toUri();
+        return ResponseEntity.created(uri).body(service.cadastro(pergunta));
     }
     @PutMapping(value = "/{id}")
     public Pergunta update(@RequestBody Pergunta pergunta, @PathVariable Long id){
